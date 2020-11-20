@@ -1,4 +1,4 @@
-package com.bfs.employemanagesys.POJO;
+package com.bfs.employemanagesys.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Description: <br>
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @ToString
 @Table(name = "House")
-public class House {
+public class House implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;

@@ -1,7 +1,7 @@
 package com.bfs.employemanagesys.service;
 
-import com.bfs.employemanagesys.DAO.EmployeeDAO;
-import com.bfs.employemanagesys.POJO.Employee;
+import com.bfs.employemanagesys.dao.EmployeeDAO;
+import com.bfs.employemanagesys.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

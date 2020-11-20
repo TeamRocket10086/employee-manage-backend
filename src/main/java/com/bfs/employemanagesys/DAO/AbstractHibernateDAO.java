@@ -1,4 +1,4 @@
-package com.bfs.employemanagesys.DAO;
+package com.bfs.employemanagesys.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

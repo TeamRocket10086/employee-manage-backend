@@ -6,6 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 
+/**
+ * Description: <br>
+ *
+ * @author: Billy <br>
+ * @createDate: 2020-11-18 <br>
+ */
 public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     @Autowired
@@ -24,5 +30,4 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
-
 }

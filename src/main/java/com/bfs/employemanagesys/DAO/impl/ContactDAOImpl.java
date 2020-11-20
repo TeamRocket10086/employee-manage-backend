@@ -1,8 +1,8 @@
-package com.bfs.employemanagesys.DAO.impl;
+package com.bfs.employemanagesys.dao.impl;
 
-import com.bfs.employemanagesys.DAO.AbstractHibernateDAO;
-import com.bfs.employemanagesys.DAO.ContactDAO;
-import com.bfs.employemanagesys.POJO.Contact;
+import com.bfs.employemanagesys.dao.AbstractHibernateDAO;
+import com.bfs.employemanagesys.dao.ContactDAO;
+import com.bfs.employemanagesys.pojo.Contact;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.bfs.employemanagesys.POJO;
+package com.bfs.employemanagesys.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Description: <br>
@@ -27,7 +28,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @ToString
 @Table(name = "Employee")
-public class Employee {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
