@@ -1,6 +1,5 @@
 package com.bfs.employemanagesys.controller;
 
-import com.bfs.employemanagesys.service.EmployeeService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,9 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @createDate: 2020-11-18 <br>
  */
 @RestController
-@RequestMapping("/Employee")
-public class EmployeeController {
-
-    EmployeeService employeeService;
-
+@RequestMapping("/Contact")
+public class ContactController {
 }
