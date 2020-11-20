@@ -1,6 +1,6 @@
-package com.bfs.employemanagesys.DAO;
+package com.bfs.employemanagesys.dao;
 
-import com.bfs.employemanagesys.POJO.Employee;
+import com.bfs.employemanagesys.pojo.Employee;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.bfs.employemanagesys.POJO;
+package com.bfs.employemanagesys.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

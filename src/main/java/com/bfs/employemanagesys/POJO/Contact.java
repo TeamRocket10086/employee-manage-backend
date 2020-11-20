@@ -1,4 +1,4 @@
-package com.bfs.employemanagesys.POJO;
+package com.bfs.employemanagesys.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

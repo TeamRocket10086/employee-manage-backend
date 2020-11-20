@@ -1,7 +1,7 @@
 package com.bfs.employemanagesys.service;
 
-import com.bfs.employemanagesys.DAO.ContactDAO;
-import com.bfs.employemanagesys.POJO.Contact;
+import com.bfs.employemanagesys.dao.ContactDAO;
+import com.bfs.employemanagesys.pojo.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
