@@ -1,13 +1,13 @@
 package com.bfs.employemanagesys.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity @Getter @Setter @NoArgsConstructor
+@Entity @Getter @Setter @AllArgsConstructor
 @Table(name = "VisaStatus", schema = "employee")
 public class VisaStatus implements Serializable {
 
