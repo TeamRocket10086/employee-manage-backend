@@ -1,10 +1,13 @@
 package com.bfs.employemanagesys.service;
 
 import com.bfs.employemanagesys.dao.ContactDAO;
+import com.bfs.employemanagesys.pojo.Address;
 import com.bfs.employemanagesys.pojo.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Description: <br>
@@ -22,8 +25,17 @@ public class ContactService {
     }
 
     @Transactional
-    public Integer addContact(Contact contact) {
-        return contactDAO.addContact(contact);
+    public void addContact(Integer personID, String relationship, boolean isReferrence, boolean isEmergency, boolean isLandlord, String name, String email, String phone, List<Contact> contacts) {
+        Contact c = new Contact();
+
+        c.setRelationship(relationship);
+        c.setIsReferrence(isReferrence);
+        c.setIsEmergency(isEmergency);
+        c.setIsLandlord(isLandlord);
+        c.setName(name);
+        c.setEmail(email);
+        c.setPhone(phone);
+        contactDAO.addContact(c);
     }
 
     @Transactional

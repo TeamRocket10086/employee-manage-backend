@@ -1,7 +1,7 @@
 package com.bfs.employemanagesys.service;
 
 import com.bfs.employemanagesys.dao.AddressDAO;
-import com.bfs.employemanagesys.dao.NewContactDAO;
+import com.bfs.employemanagesys.dao.ContactDAO;
 import com.bfs.employemanagesys.dao.PersonDAO;
 import com.bfs.employemanagesys.pojo.Address;
 import com.bfs.employemanagesys.pojo.Contact;
@@ -16,10 +16,10 @@ import java.util.List;
 public class PersonalInfoService {
     public PersonDAO personDAO;
     public AddressDAO addressDAO;
-    public NewContactDAO contactDAO;
+    public ContactDAO contactDAO;
 
     @Autowired
-    public void setNewContactDAO(NewContactDAO cDAO) {
+    public void setNewContactDAO(ContactDAO cDAO) {
         this.contactDAO = cDAO;
     }
 

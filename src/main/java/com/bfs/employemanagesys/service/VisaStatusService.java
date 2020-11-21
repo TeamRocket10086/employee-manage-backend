@@ -1,6 +1,7 @@
 package com.bfs.employemanagesys.service;
 
 import com.bfs.employemanagesys.dao.VisaStatusDAO;
+import com.bfs.employemanagesys.pojo.Contact;
 import com.bfs.employemanagesys.pojo.VisaStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,8 +17,13 @@ public class VisaStatusService {
     }
 
     @Transactional
-    public int addVisaStatus(VisaStatus v) {
-        return visaStatusDAO.addVisaStatus(v);
+    public void addVisaStatus(String visaType, Integer active, String modificationDate, String createUser) {
+        VisaStatus v = new VisaStatus();
+        v.setVisaType(visaType);
+        v.setActive(active);
+        v.setModificationDate(modificationDate);
+        v.setCreateUser(createUser);
+        visaStatusDAO.addVisaStatus(v);
     }
 
     @Transactional

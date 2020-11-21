@@ -1,6 +1,7 @@
 package com.bfs.employemanagesys.service;
 
 import com.bfs.employemanagesys.dao.EmployeeDAO;
+import com.bfs.employemanagesys.domain.EmployeeDTO;
 import com.bfs.employemanagesys.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,8 +24,18 @@ public class EmployeeService {
     }
 
     @Transactional
-    public Integer addEmployee(Employee employee) {
-        return employeeDAO.addEmployee(employee);
+    public void addEmployee(EmployeeDTO employeeDTO) {
+        Employee e = new Employee();
+        e.setAvatar(employeeDTO.avatar);
+        e.setCar(employeeDTO.car);
+        e.setDriverLisence(employeeDTO.driverLicense);
+        e.setDriverLisenceExpirationDate(employeeDTO.driverLicenseExpirationDate);
+        e.setEndDate(employeeDTO.endDate);
+        e.setStartDate(employeeDTO.startDate);
+        e.setTitle(employeeDTO.title);
+        e.setVisaStartDate(employeeDTO.visaStartDate);
+        e.setVisaEndDate(employeeDTO.visaEndDate);
+        employeeDAO.addEmployee(e);
     }
 
     @Transactional
