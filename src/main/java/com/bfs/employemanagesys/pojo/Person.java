@@ -21,6 +21,18 @@ public class Person implements Serializable {
     private String dob;
     private List<Address> addresses = new ArrayList<>(0);
 
+    private List<Contact> contacts = new ArrayList<>(0);
+
+    @OneToMany(targetEntity=Contact.class, mappedBy = "person", fetch=FetchType.LAZY
+            , cascade={CascadeType.MERGE, CascadeType.REMOVE})
+    @JsonIgnore
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
