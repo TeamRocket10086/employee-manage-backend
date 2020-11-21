@@ -122,7 +122,7 @@ public class Person implements Serializable {
         this.dob = dob;
     }
 
-    @OneToMany(targetEntity=Address.class, mappedBy = "person", fetch=FetchType.EAGER
+    @OneToMany(targetEntity=Address.class, mappedBy = "person", fetch=FetchType.LAZY
             , cascade={CascadeType.MERGE, CascadeType.REMOVE})
     @JsonIgnore
     public List<Address> getAddresses() {

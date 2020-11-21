@@ -24,7 +24,7 @@ public class VisaStatusDAOImpl extends AbstractHibernateDAO implements VisaStatu
 
         try {
             ts = getCurrentSession().beginTransaction();
-            getCurrentSession().save(v);
+            getCurrentSession().saveOrUpdate(v);
             ts.commit();
         } catch (Exception e) {
             ts.rollback();
