@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class VisaStatus implements Serializable {
 
     private Integer id;
-    private Integer active;
+    private boolean active;
     private String visaType;
     private String modificationDate;
     private String createUser;
@@ -26,11 +26,11 @@ public class VisaStatus implements Serializable {
 
     @Basic
     @Column(name = "Active", nullable = false)
-    public Integer getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(Integer active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -72,7 +72,7 @@ public class VisaStatus implements Serializable {
         VisaStatus that = (VisaStatus) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (active != null ? !active.equals(that.active) : that.active != null) return false;
+        if (active != that.active) return false;
         if (visaType != null ? !visaType.equals(that.visaType) : that.visaType != null) return false;
         if (modificationDate != null ? !modificationDate.equals(that.modificationDate) : that.modificationDate != null)
             return false;
@@ -85,7 +85,7 @@ public class VisaStatus implements Serializable {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (visaType != null ? visaType.hashCode() : 0);
-        result = 31 * result + (active != null ? active.hashCode() : 0);
+        result = 31 * result + (active == true ? 1 : 0);
         result = 31 * result + (modificationDate != null ? modificationDate.hashCode() : 0);
         result = 31 * result + (createUser != null ? createUser.hashCode() : 0);
         return result;

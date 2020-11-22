@@ -35,17 +35,11 @@ public class PersonService {
     }
 
     @Transactional
-    public void addPerson(PersonDTO personDTO, List<Address> addresses){
-        Person p = new Person();
-        p.setAlternatePhone(personDTO.alternatePhone);
-        p.setCellPhone(personDTO.cellPhone);
-        p.setDob(personDTO.dob);
-        p.setEmail(personDTO.email);
-        p.setFirstName(personDTO.firstName);
-        p.setGender(personDTO.gender);
-        p.setLastName(personDTO.lastName);
-        p.setMiddleName(personDTO.middleName);
-        p.setSsn(personDTO.ssn);
+    public void addPerson(int pid, PersonDTO personDTO, List<Address> addresses){
+        Person p = personDAO.getPersonById(pid);
+        if(p == null)
+            p =new Person();
+        personDTO.convertToEntity(p);
         for(Address addr : addresses){
             addr.setPerson(p);
             addressDAO.addAddress(addr);

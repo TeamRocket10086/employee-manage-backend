@@ -1,6 +1,7 @@
 package com.bfs.employemanagesys.dao;
 
 import com.bfs.employemanagesys.pojo.Employee;
+import com.bfs.employemanagesys.pojo.Person;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -17,11 +18,11 @@ public class EmployeeDAO extends AbstractHibernateDAO<Employee> {
         return findById(id);
     }
 
-    public Employee getEmployeeByPerson(Integer personid) {
-        String hql = "from Employee where PersonID = ?1";
+    public Employee getEmployeeByPerson(Person person) {
+        String hql = "from Employee where Person = ?1";
         Session s = sessionFactory.getCurrentSession();
         Query query = s.createQuery(hql);
-        query.setParameter(1, personid);
+        query.setParameter(1, person);
         List<Employee> list = query.list();
         if(list == null || list.size() == 0)
             return null;

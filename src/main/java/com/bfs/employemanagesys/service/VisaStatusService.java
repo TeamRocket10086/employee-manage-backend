@@ -17,7 +17,7 @@ public class VisaStatusService {
     }
 
     @Transactional
-    public void addVisaStatus(String visaType, Integer active, String modificationDate, String createUser) {
+    public void addVisaStatus(String visaType, boolean active, String modificationDate, String createUser) {
         VisaStatus v = new VisaStatus();
         v.setVisaType(visaType);
         v.setActive(active);

@@ -1,19 +1,38 @@
 package com.bfs.employemanagesys.controller;
 
+import com.bfs.employemanagesys.domain.PersonalInfoResponse;
+import com.bfs.employemanagesys.domain.ServiceStatus;
+import com.bfs.employemanagesys.service.PersonalInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PersonalInfoController {
     //Assume JWT in cookie provides most data from User table such as userid, personid, etc.
 
-    /*
-    private ConcertService concertService;
+    private PersonalInfoService personService;
     @Autowired
-    public void setConcertService(ConcertService concertService){
-        this.concertService = concertService;
+    public void setPersonService(PersonalInfoService pService){
+        personService = pService;
     }
 
+    @GetMapping("/personalinfo")
+    public PersonalInfoResponse getAllInfo(){
+        int pid = 1;
+        PersonalInfoResponse response = new PersonalInfoResponse();
+        response.setPerson(personService.getPerson(pid));
+        response.setResponseContacts(personService.getContacts(pid));
+        response.setResponseAddresses(personService.getAddresses(pid));
+        prepareResponse(response, true, "");
+        System.out.println(response);
+        return response;
+    }
 
+    private void prepareResponse(PersonalInfoResponse response, boolean success, String errorMessage) {
+        response.setServiceStatus(new ServiceStatus(success ? "SUCCESS" : "FAILED", success, errorMessage));
+    }
+    /*
     @GetMapping("/concert/all")
     public ConcertResponse getAllConcerts(){
         ConcertResponse response = new ConcertResponse();
@@ -67,8 +86,6 @@ public class PersonalInfoController {
         return response;
     }
 
-    private void prepareResponse(ConcertResponse response, boolean success, String errorMessage) {
-        response.setServiceStatus(new ServiceStatus(success ? "SUCCESS" : "FAILED", success, errorMessage));
-    }
+
      */
 }
