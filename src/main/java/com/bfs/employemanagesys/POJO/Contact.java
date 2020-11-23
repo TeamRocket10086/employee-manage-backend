@@ -25,5 +25,5 @@ public class Contact {
     private String Title;
     private boolean isReferrence;
     private boolean isEmergency;
-    private boolean isLandlord;;
+    private boolean isLandlord;
 }
