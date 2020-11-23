@@ -4,10 +4,12 @@ import com.bfs.employemanagesys.domain.PersonalInfoResponse;
 import com.bfs.employemanagesys.domain.ServiceStatus;
 import com.bfs.employemanagesys.service.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonalInfoController {
     //Assume JWT in cookie provides most data from User table such as userid, personid, etc.
 
@@ -25,7 +27,7 @@ public class PersonalInfoController {
         response.setResponseContacts(personService.getContacts(pid));
         response.setResponseAddresses(personService.getAddresses(pid));
         prepareResponse(response, true, "");
-        System.out.println(response);
+        //System.out.println(response);
         return response;
     }
 

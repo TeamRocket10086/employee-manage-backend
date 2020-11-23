@@ -18,6 +18,7 @@ public class AddressDTO implements DTO <Address> {
     private String stateName;
     private String stateAbbr;
     private boolean isPrimary;
+    private int id = 0; // use primitive here to ensure there must be a value
 
     @Override
     public void convertToDTO(Address address) {
@@ -28,6 +29,7 @@ public class AddressDTO implements DTO <Address> {
         stateName = address.getStateName();
         stateAbbr = address.getStateAbbr();
         isPrimary = address.getIsPrimary();
+        id = address.getId();
     }
 
     @Override
@@ -44,5 +46,6 @@ public class AddressDTO implements DTO <Address> {
             address.setStateName(stateName);
         if(this.zipcode != null && this.zipcode.length() > 0)
             address.setZipcode(zipcode);
+        // Do NOT transfer id here
     }
 }

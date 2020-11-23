@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -20,6 +23,7 @@ public class PersonDTO implements DTO<Person> {
     public String gender;
     public String ssn;
     public String dob;
+    int age;
     //public String passwordToSend;
     //public String passwordToSet;
 
@@ -32,7 +36,10 @@ public class PersonDTO implements DTO<Person> {
         cellPhone = p.getCellPhone();
         alternatePhone = p.getAlternatePhone();
         gender = p.getGender();
-
+        dob = p.getDob();
+        LocalDate birthDate = LocalDate.parse(dob);
+        LocalDate currentDate = LocalDate.now();
+        age = Period.between(birthDate, currentDate).getYears();
         // Hide info in ssn
         ssn = "xxxxx" + p.getSsn().substring(5);
         //passwordToSet = null;

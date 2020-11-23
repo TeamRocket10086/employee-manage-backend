@@ -18,6 +18,7 @@ public class ContactDTO  implements DTO<Contact> {
     private String name;
     private String email;
     private String phone;
+    private int id = 0; // use primitive here to ensure there must be a value
 
     @Override
     public void convertToDTO(Contact contact) {
@@ -28,6 +29,7 @@ public class ContactDTO  implements DTO<Contact> {
         name = contact.getName();
         email = contact.getEmail();
         phone = contact.getPhone();
+        id = contact.getId();
     }
 
     @Override

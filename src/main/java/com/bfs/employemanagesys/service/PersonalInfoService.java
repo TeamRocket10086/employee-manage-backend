@@ -3,6 +3,9 @@ package com.bfs.employemanagesys.service;
 import com.bfs.employemanagesys.dao.AddressDAO;
 import com.bfs.employemanagesys.dao.ContactDAO;
 import com.bfs.employemanagesys.dao.PersonDAO;
+import com.bfs.employemanagesys.domain.AddressDTO;
+import com.bfs.employemanagesys.domain.ContactDTO;
+import com.bfs.employemanagesys.domain.PersonDTO;
 import com.bfs.employemanagesys.domain.PersonalInfoResponse;
 import com.bfs.employemanagesys.pojo.Address;
 import com.bfs.employemanagesys.pojo.Contact;
@@ -47,13 +50,39 @@ public class PersonalInfoService {
     }
 
     @Transactional
+    public void updatePerson(PersonDTO personDTO, int pid) {
+        Person p = personDAO.getPersonById(pid);
+        if(p != null) {
+            personDTO.convertToEntity(p);
+            personDAO.addPerson(p);
+        }
+    }
+
+    @Transactional
     public List<Contact> getContacts(int pid) {
         Person person = personDAO.getPersonById(pid);
         return contactDAO.getContactsByPerson(person);
     }
 
+    @Transactional
+    public void addOrUpdateContact(ContactDTO contactDTO) {
+        Contact contact = contactDAO.getContactById(contactDTO.getId());
+        if(contact == null)
+            contact = new Contact();
+        contactDTO.convertToEntity(contact);
+        contactDAO.addContact(contact);
+    }
 
+    @Transactional
+    public void addOrUpdateAddress(AddressDTO addressDTO) {
+        Address addr = addressDAO.getAddressById(addressDTO.getId());
+        if(addr == null)
+            addr = new Address();
+        addressDTO.convertToEntity(addr);
+        addressDAO.addAddress(addr);
+    }
 
+    /*
     @Transactional
     public void updatePersonByEmailOrPhone(int pid, String email, String phone, String altphone) {
         Person person = personDAO.getPersonById(pid);
@@ -62,4 +91,5 @@ public class PersonalInfoService {
         person.setAlternatePhone(altphone);
         personDAO.addPerson(person);
     }
+     */
 }
