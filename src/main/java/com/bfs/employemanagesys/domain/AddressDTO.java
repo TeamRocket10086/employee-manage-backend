@@ -17,7 +17,7 @@ public class AddressDTO implements DTO <Address> {
     private String zipcode;
     private String stateName;
     private String stateAbbr;
-    private boolean bePrimary;
+    private boolean isPrimary;
     private int id = 0; // use primitive here to ensure there must be a value
 
     @Override
@@ -28,13 +28,13 @@ public class AddressDTO implements DTO <Address> {
         zipcode = address.getZipcode();
         stateName = address.getStateName();
         stateAbbr = address.getStateAbbr();
-        bePrimary = address.getIsPrimary();
+        isPrimary = address.getIsPrimary();
         id = address.getId();
     }
 
     @Override
     public void convertToEntity(Address address) {
-        address.setIsPrimary(bePrimary);
+        address.setIsPrimary(isPrimary);
         if(this.addressLine1 != null && this.addressLine1.length() > 0)
             address.setAddressLine1(addressLine1);
         address.setAddressLine2(addressLine2);
