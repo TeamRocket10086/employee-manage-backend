@@ -11,9 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContactDTO  implements DTO<Contact> {
-    private boolean beReferrence;
-    private boolean beEmergency;
-    private boolean beLandlord;
+    private boolean isReferrence;
+    private boolean isEmergency;
+    private boolean isLandlord;
     private String relationship;
     private String name;
     private String email;
@@ -22,9 +22,9 @@ public class ContactDTO  implements DTO<Contact> {
 
     @Override
     public void convertToDTO(Contact contact) {
-        beReferrence = contact.getIsReferrence();
-        beEmergency = contact.getIsEmergency();
-        beLandlord = contact.getIsLandlord();
+        isReferrence = contact.getIsReferrence();
+        isEmergency = contact.getIsEmergency();
+        isLandlord = contact.getIsLandlord();
         relationship = contact.getRelationship();
         name = contact.getName();
         email = contact.getEmail();
@@ -36,9 +36,9 @@ public class ContactDTO  implements DTO<Contact> {
     public void convertToEntity(Contact contact) {
         if(this.email != null && this.email.length() > 0)
             contact.setEmail(email);
-        contact.setIsEmergency(beEmergency);
-        contact.setIsLandlord(beLandlord);
-        contact.setIsReferrence(beReferrence);
+        contact.setIsEmergency(isEmergency);
+        contact.setIsLandlord(isLandlord);
+        contact.setIsReferrence(isReferrence);
         if(this.name != null && this.name.length() > 0)
             contact.setName(name);
         if(this.phone != null && this.phone.length() > 0)
