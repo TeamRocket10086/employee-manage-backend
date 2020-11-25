@@ -45,4 +45,31 @@ public class PersonDAO extends AbstractHibernateDAO<Person> {
         Session session = getCurrentSession();
         session.saveOrUpdate(person);
     }
+
+    /*
+    public List<ConcertReservation> getConcertReservationByID(Integer user_id){
+        CriteriaBuilder cb = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<ConcertReservation> cq = cb.createQuery(ConcertReservation.class);
+
+        Root<Reservation> pRoot = cq.from(Reservation.class);
+        pRoot.join("concert", JoinType.INNER);
+
+        cq.multiselect(
+                pRoot.get("concert").get("title"),
+                pRoot.get("concert").get("description"),
+                pRoot.get("concert").get("time"),
+                pRoot.get("concert").get("duration"),
+                pRoot.get("user_id"),
+                pRoot.get("num_ticket"),
+                pRoot.get("create_at")
+        );
+
+        cq.where(pRoot.get("user_id").in(user_id));
+
+        List<ConcertReservation> resultlist = getCurrentSession().createQuery(cq).getResultList();
+
+        return resultlist;
+
+    }
+     */
 }

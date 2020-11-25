@@ -26,7 +26,7 @@ public class AddressDAO extends AbstractHibernateDAO<Address>  {
         List<Address> list = query.list();
         if(list == null || list.size() == 0)
             return null;
-        //System.out.println("Size is " + list.size());
+        //System.out.println("getAddressesByPerson size is " + list.size());
         return list;
     }
 

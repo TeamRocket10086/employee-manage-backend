@@ -97,9 +97,10 @@ public class Address implements Serializable {
         this.isPrimary = isPrimary;
     }
 
+    private Person person;
+
     @ManyToOne(targetEntity=Person.class)
     @JoinColumn(name = "PersonID")
-    private Person person;
     public Person getPerson() {
         return person;
     }
