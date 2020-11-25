@@ -36,10 +36,10 @@ public class PersonalInfoController {
 
     @PutMapping("/personalinfo/person")
     public void updatePerson(@RequestBody PersonDTO person){
-        //int pid = person.getId();
         int pid = getPersonID();
         personService.updatePerson(person, pid);
     }
+
 
     private void prepareResponse(PersonalInfoResponse response, boolean success, String errorMessage) {
         response.setServiceStatus(new ServiceStatus(success ? "SUCCESS" : "FAILED", success, errorMessage));
