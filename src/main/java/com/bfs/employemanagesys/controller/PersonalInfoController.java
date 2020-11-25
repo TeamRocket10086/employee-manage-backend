@@ -31,6 +31,8 @@ public class PersonalInfoController {
         return response;
     }
 
+    //
+
     private void prepareResponse(PersonalInfoResponse response, boolean success, String errorMessage) {
         response.setServiceStatus(new ServiceStatus(success ? "SUCCESS" : "FAILED", success, errorMessage));
     }
