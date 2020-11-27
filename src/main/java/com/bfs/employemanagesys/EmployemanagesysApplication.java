@@ -2,6 +2,10 @@ package com.bfs.employemanagesys;
 
 import com.bfs.employemanagesys.dao.VisaStatusDAO;
 import com.bfs.employemanagesys.pojo.VisaStatus;
+import com.bfs.employemanagesys.service.S3Services;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
