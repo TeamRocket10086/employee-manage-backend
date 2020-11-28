@@ -61,7 +61,7 @@ public class PersonDTO implements DTO<Person> {
         if(this.lastName != null && this.lastName.length() > 0)
             p.setLastName(this.lastName);
         p.setMiddleName(this.middleName);
-        if(this.ssn != null && this.ssn.length() > 0)
+        if(this.ssn != null && this.ssn.length() == 9 && this.ssn.matches("-?\\d+(\\.\\d+)?"))
             p.setSsn(this.ssn);
     }
 }
