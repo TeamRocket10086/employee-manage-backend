@@ -5,7 +5,6 @@ import com.bfs.employemanagesys.dao.PersonDAO;
 import com.bfs.employemanagesys.domain.PersonDTO;
 import com.bfs.employemanagesys.pojo.Address;
 import com.bfs.employemanagesys.pojo.Person;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

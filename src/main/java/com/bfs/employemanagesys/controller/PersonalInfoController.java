@@ -5,17 +5,12 @@ import com.bfs.employemanagesys.domain.PersonalInfoResponse;
 import com.bfs.employemanagesys.domain.ServiceStatus;
 import com.bfs.employemanagesys.service.PersonalInfoService;
 import com.bfs.employemanagesys.service.S3Services;
-import org.apache.catalina.connector.Response;
-import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

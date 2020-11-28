@@ -1,6 +1,9 @@
 package com.bfs.employemanagesys.domain;
 
-import com.bfs.employemanagesys.pojo.*;
+import com.bfs.employemanagesys.pojo.Address;
+import com.bfs.employemanagesys.pojo.Contact;
+import com.bfs.employemanagesys.pojo.Person;
+import com.bfs.employemanagesys.pojo.VisaStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

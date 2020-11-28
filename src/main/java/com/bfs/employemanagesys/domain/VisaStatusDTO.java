@@ -1,7 +1,6 @@
 package com.bfs.employemanagesys.domain;
 
 import com.bfs.employemanagesys.pojo.VisaStatus;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
