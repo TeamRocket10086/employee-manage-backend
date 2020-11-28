@@ -72,6 +72,12 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
         </dependency>
+        <!-- amazonS3-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.908</version>
+        </dependency>
         <!-- Additional dependencies added above -->
     </dependencies>
 

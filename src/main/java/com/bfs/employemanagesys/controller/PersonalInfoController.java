@@ -1,17 +1,24 @@
 package com.bfs.employemanagesys.controller;
 
+import com.bfs.employemanagesys.domain.PersonDTO;
 import com.bfs.employemanagesys.domain.PersonalInfoResponse;
 import com.bfs.employemanagesys.domain.ServiceStatus;
 import com.bfs.employemanagesys.service.PersonalInfoService;
+import com.bfs.employemanagesys.service.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonalInfoController {
     //Assume JWT in cookie provides most data from User table such as userid, personid, etc.
+
+    @Autowired
+    S3Services s3Services;
 
     private PersonalInfoService personService;
     @Autowired
@@ -19,9 +26,13 @@ public class PersonalInfoController {
         personService = pService;
     }
 
+    public int getPersonID(){
+        return 1;
+    }
+
     @GetMapping("/personalinfo")
     public PersonalInfoResponse getAllInfo(){
-        int pid = 1;
+        int pid = getPersonID();
         PersonalInfoResponse response = new PersonalInfoResponse();
         response.setPerson(personService.getPerson(pid));
         response.setResponseContacts(personService.getContacts(pid));
@@ -30,6 +41,20 @@ public class PersonalInfoController {
         //System.out.println(response);
         return response;
     }
+
+    @PutMapping("/personalinfo/person")
+    public void updatePerson(@RequestBody PersonDTO person){
+        int pid = getPersonID();
+        personService.updatePerson(person, pid);
+    }
+
+    @PostMapping("/upload")
+    public void uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException {
+
+        s3Services.uploadFile(multipartFile);
+    }
+
+
 
     private void prepareResponse(PersonalInfoResponse response, boolean success, String errorMessage) {
         response.setServiceStatus(new ServiceStatus(success ? "SUCCESS" : "FAILED", success, errorMessage));
