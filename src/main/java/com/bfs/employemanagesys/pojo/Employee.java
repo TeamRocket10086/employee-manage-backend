@@ -117,17 +117,29 @@ public class Employee implements Serializable {
         this.driverLisenceExpirationDate = driverLisenceExpirationDate;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PersonID", referencedColumnName = "ID")
     private Person person;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "VisaStatusID", referencedColumnName = "ID")
+    @JoinColumn(name = "PersonID", referencedColumnName = "ID")
+    public Person getPerson() {
+        return this.person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     private VisaStatus visaStatus;
-    private String VisaStartDate;
-    private String VisaEndDate;
-    private String DriverLisence;
-    private String DriverLisence_ExpirationDate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "VisaStatusID", referencedColumnName = "ID")
+    public VisaStatus getVisaStatus() {
+        return this.visaStatus;
+    }
+
+    public void setVisaStatus(VisaStatus visaStatus) {
+        this.visaStatus = visaStatus;
+    }
 
     @Override
     public boolean equals(Object o) {
