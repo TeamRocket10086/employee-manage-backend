@@ -1,8 +1,6 @@
 package com.bfs.employemanagesys.controller;
 
-import com.bfs.employemanagesys.domain.PersonDTO;
-import com.bfs.employemanagesys.domain.PersonalInfoResponse;
-import com.bfs.employemanagesys.domain.ServiceStatus;
+import com.bfs.employemanagesys.domain.*;
 import com.bfs.employemanagesys.service.PersonalInfoService;
 import com.bfs.employemanagesys.service.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -48,8 +47,22 @@ public class PersonalInfoController {
         personService.updatePerson(person, pid);
     }
 
+    @PutMapping("/personalinfo/address")
+    public void updateAddresses(@RequestBody AddressDTO addr){
+        personService.addOrUpdateAddress(addr);
+        //personService.addOrUpdateAddress(secondary);
+        //@RequestBody AddressDTO primary, @RequestBody AddressDTO secondary
+    }
+
+    @PutMapping("/personalinfo/contact")
+    public void updateContacts(@RequestBody List<ContactDTO> contacts){
+        for(ContactDTO contact: contacts)
+            personService.addOrUpdateContact(contact);
+    }
+
     @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException {
+    public void uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest httpServletRequest)
+            throws IOException {
 
         s3Services.uploadFile(multipartFile);
     }
