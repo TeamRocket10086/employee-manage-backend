@@ -13,6 +13,14 @@ public class VisaStatus implements Serializable {
     private String modificationDate;
     private String createUser;
 
+    /*
+    private Employee employee;
+
+    @OneToOne(targetEntity=Employee.class, mappedBy = "visaStatus", fetch = FetchType.LAZY)
+    public Employee getEmployee() { return employee; }
+    public void setEmployee(Employee emp) { this.employee = emp; }
+    */
+
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

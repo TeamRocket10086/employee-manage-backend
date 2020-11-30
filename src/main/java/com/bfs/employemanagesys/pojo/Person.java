@@ -23,6 +23,13 @@ public class Person implements Serializable {
     private String dob;
     private List<Address> addresses = new ArrayList<>(0);
 
+    /*
+    private Employee employee;
+
+    @OneToOne(targetEntity=Employee.class, mappedBy = "person", fetch = FetchType.LAZY)
+    public Employee getEmployee() { return employee; }
+    public void setEmployee(Employee emp) { this.employee = emp; }*/
+
     private List<Contact> contacts = new ArrayList<>(0);
 
     @OneToMany(targetEntity=Contact.class, mappedBy = "person", fetch=FetchType.LAZY
