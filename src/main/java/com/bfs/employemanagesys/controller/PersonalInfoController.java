@@ -1,6 +1,7 @@
 package com.bfs.employemanagesys.controller;
 
 import com.bfs.employemanagesys.domain.*;
+import com.bfs.employemanagesys.pojo.Employee;
 import com.bfs.employemanagesys.service.PersonalInfoService;
 import com.bfs.employemanagesys.service.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class PersonalInfoController {
     public int getPersonID(){
         return 1;
     }
+    public int getEmployeeID(){
+        return 1;
+    }
 
     @GetMapping("/personalinfo")
     public PersonalInfoResponse getAllInfo(){
@@ -36,9 +40,19 @@ public class PersonalInfoController {
         response.setPerson(personService.getPerson(pid));
         response.setResponseContacts(personService.getContacts(pid));
         response.setResponseAddresses(personService.getAddresses(pid));
+        // TODO: revise the following
+        int eid = getEmployeeID();
+        response.setEmployee(personService.getEmployee(eid));
+
         prepareResponse(response, true, "");
         //System.out.println(response);
         return response;
+    }
+
+    @PutMapping("/personalinfo/employee")
+    public void updateEmployee(@RequestBody EmployeeDTO emp){
+        int pid = getPersonID();
+        personService.updateEmployee(emp, pid);
     }
 
     @PutMapping("/personalinfo/person")

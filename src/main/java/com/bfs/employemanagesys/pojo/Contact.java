@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Contact")
+@Table(name = "Contact", schema = "employee")
 /**
  * George: No address for Contact supported by current DB design
  */

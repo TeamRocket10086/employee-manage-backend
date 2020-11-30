@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Employee", schema = "employee")
 public class Employee implements Serializable {
     private Integer id;
     private String title;
@@ -119,20 +120,19 @@ public class Employee implements Serializable {
 
     private Person person;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PersonID", referencedColumnName = "ID")
+    @OneToOne(targetEntity=Person.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "PersonID")
     public Person getPerson() {
         return this.person;
     }
-
     public void setPerson(Person person) {
         this.person = person;
     }
 
     private VisaStatus visaStatus;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "VisaStatusID", referencedColumnName = "ID")
+    @OneToOne(targetEntity=VisaStatus.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "VisaStatusID")
     public VisaStatus getVisaStatus() {
         return this.visaStatus;
     }

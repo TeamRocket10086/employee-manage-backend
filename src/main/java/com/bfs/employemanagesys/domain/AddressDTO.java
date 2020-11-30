@@ -34,7 +34,9 @@ public class AddressDTO implements DTO <Address> {
 
     @Override
     public void convertToEntity(Address address) {
+        System.out.println("From frontend" + bePrimary);
         address.setIsPrimary(bePrimary);
+        System.out.println("After conversion from frontend" + address.getIsPrimary());
         if(this.addressLine1 != null && this.addressLine1.length() > 0)
             address.setAddressLine1(addressLine1);
         address.setAddressLine2(addressLine2);

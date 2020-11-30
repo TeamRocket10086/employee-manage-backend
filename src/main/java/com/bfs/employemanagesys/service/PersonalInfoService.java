@@ -2,13 +2,12 @@ package com.bfs.employemanagesys.service;
 
 import com.bfs.employemanagesys.dao.AddressDAO;
 import com.bfs.employemanagesys.dao.ContactDAO;
+import com.bfs.employemanagesys.dao.EmployeeDAO;
 import com.bfs.employemanagesys.dao.PersonDAO;
-import com.bfs.employemanagesys.domain.AddressDTO;
-import com.bfs.employemanagesys.domain.ContactDTO;
-import com.bfs.employemanagesys.domain.PersonDTO;
-import com.bfs.employemanagesys.domain.PersonalInfoResponse;
+import com.bfs.employemanagesys.domain.*;
 import com.bfs.employemanagesys.pojo.Address;
 import com.bfs.employemanagesys.pojo.Contact;
+import com.bfs.employemanagesys.pojo.Employee;
 import com.bfs.employemanagesys.pojo.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,7 @@ public class PersonalInfoService {
     public PersonDAO personDAO;
     public AddressDAO addressDAO;
     public ContactDAO contactDAO;
+    public EmployeeDAO employeeDAO;
     public PersonalInfoResponse response;
 
     @Autowired
@@ -35,6 +35,9 @@ public class PersonalInfoService {
 
     @Autowired
     public void setAddressDAO(AddressDAO aDAO) { this.addressDAO = aDAO; }
+
+    @Autowired
+    public void setEmployeeDAO(EmployeeDAO eDAO) { this.employeeDAO = eDAO; }
 
     public PersonalInfoResponse getResponse() { return response; }
 
@@ -80,6 +83,23 @@ public class PersonalInfoService {
             addr = new Address();
         addressDTO.convertToEntity(addr);
         addressDAO.addAddress(addr);
+    }
+
+    @Transactional
+    public Employee getEmployee(int id) {
+        Person p = personDAO.getPersonById(id);
+        //System.out.println(p.getFirstName());
+        //return employeeDAO.getEmployeeByPerson(p);
+        return employeeDAO.getEmployeeById(id);
+    }
+
+    @Transactional
+    public void updateEmployee(EmployeeDTO emp, int pid) {
+        Employee employee = employeeDAO.getEmployeeById(emp.getEid());
+        if(employee == null)
+            employee = new Employee();
+        emp.convertToEntity(employee);
+        employeeDAO.addEmployee(employee);
     }
 
     /*

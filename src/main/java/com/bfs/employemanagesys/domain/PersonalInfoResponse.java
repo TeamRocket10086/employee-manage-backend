@@ -1,9 +1,6 @@
 package com.bfs.employemanagesys.domain;
 
-import com.bfs.employemanagesys.pojo.Address;
-import com.bfs.employemanagesys.pojo.Contact;
-import com.bfs.employemanagesys.pojo.Person;
-import com.bfs.employemanagesys.pojo.VisaStatus;
+import com.bfs.employemanagesys.pojo.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,11 +23,16 @@ public class PersonalInfoResponse {
     private ContactDTO referee;
     private List<ContactDTO> emergencies;
     private EmployeeDTO employee;
-    private VisaStatus visa;
+    //private VisaStatus visa;
 
     public void setPerson(Person p){
         person = new PersonDTO();
         person.convertToDTO(p);
+    }
+
+    public void setEmployee(Employee emp) {
+        employee = new EmployeeDTO();
+        employee.convertToDTO(emp);
     }
 
     public void setResponseContacts(List<Contact> contacts) {

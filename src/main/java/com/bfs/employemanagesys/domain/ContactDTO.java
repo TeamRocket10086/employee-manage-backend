@@ -45,5 +45,7 @@ public class ContactDTO  implements DTO<Contact> {
             contact.setPhone(phone);
         if(this.relationship != null && this.relationship.length() > 0)
             contact.setRelationship(relationship);
+        if(this.id > 0)
+            contact.setId(id);
     }
 }
