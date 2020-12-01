@@ -41,7 +41,7 @@ public class ContactDTO  implements DTO<Contact> {
         contact.setIsReferrence(beReferrence);
         if(this.name != null && this.name.length() > 0)
             contact.setName(name);
-        if(this.phone != null && this.phone.length() > 0)
+        if(this.phone != null  && this.phone.length() == 10 && this.phone.matches("-?\\d+(\\.\\d+)?"))
             contact.setPhone(phone);
         if(this.relationship != null && this.relationship.length() > 0)
             contact.setRelationship(relationship);

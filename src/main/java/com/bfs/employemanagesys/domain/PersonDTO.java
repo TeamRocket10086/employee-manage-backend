@@ -47,8 +47,9 @@ public class PersonDTO implements DTO<Person> {
 
     @Override
     public void convertToEntity (Person p) {
-        p.setAlternatePhone(this.alternatePhone);
-        if(this.cellPhone != null && this.cellPhone.length() > 0)
+        if(this.alternatePhone != null && this.alternatePhone.length() == 10 && this.alternatePhone.matches("-?\\d+(\\.\\d+)?"))
+            p.setAlternatePhone(this.alternatePhone);
+        if(this.cellPhone != null  && this.cellPhone.length() == 10 && this.cellPhone.matches("-?\\d+(\\.\\d+)?"))
             p.setCellPhone(this.cellPhone);
         if(this.dob != null && this.dob.length() > 0)
             p.setDob(this.dob);
@@ -60,7 +61,8 @@ public class PersonDTO implements DTO<Person> {
             p.setGender(this.gender);
         if(this.lastName != null && this.lastName.length() > 0)
             p.setLastName(this.lastName);
-        p.setMiddleName(this.middleName);
+        if(this.middleName != null)
+            p.setMiddleName(this.middleName);
         if(this.ssn != null && this.ssn.length() == 9 && this.ssn.matches("-?\\d+(\\.\\d+)?"))
             p.setSsn(this.ssn);
     }

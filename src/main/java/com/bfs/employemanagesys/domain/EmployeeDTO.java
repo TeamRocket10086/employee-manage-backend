@@ -63,7 +63,7 @@ public class EmployeeDTO implements DTO<Employee> {
          employee.setVisaStartDate(visaStartDate);
         if(this.visaEndDate != null && this.visaEndDate.length() > 0)
          employee.setVisaEndDate(visaEndDate);
-        if(this.driverLicense != null && this.driverLicense.length() > 0)
+        if(this.driverLicense != null && this.driverLicense.length() > 0) //not sure about the format check
          employee.setDriverLisence(driverLicense);
         if(this.driverLicenseExpirationDate != null && this.driverLicenseExpirationDate.length() > 0)
          employee.setDriverLisenceExpirationDate(driverLicenseExpirationDate);

@@ -34,19 +34,19 @@ public class AddressDTO implements DTO <Address> {
 
     @Override
     public void convertToEntity(Address address) {
-        System.out.println("From frontend" + bePrimary);
+        //System.out.println("From frontend" + bePrimary);
         address.setIsPrimary(bePrimary);
-        System.out.println("After conversion from frontend" + address.getIsPrimary());
+        //System.out.println("After conversion from frontend" + address.getIsPrimary());
         if(this.addressLine1 != null && this.addressLine1.length() > 0)
             address.setAddressLine1(addressLine1);
         address.setAddressLine2(addressLine2);
         if(this.city != null && this.city.length() > 0)
             address.setCity(city);
-        if(this.stateAbbr != null && this.stateAbbr.length() > 0)
+        if(this.stateAbbr != null && this.stateAbbr.length() == 2)
             address.setStateAbbr(stateAbbr);
         if(this.stateName != null && this.stateName.length() > 0)
             address.setStateName(stateName);
-        if(this.zipcode != null && this.zipcode.length() > 0)
+        if(this.zipcode != null && this.zipcode.length() == 5 && this.zipcode.matches("-?\\d+(\\.\\d+)?"))
             address.setZipcode(zipcode);
         // Do NOT transfer id here
     }
